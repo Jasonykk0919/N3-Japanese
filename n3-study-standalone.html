@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>日文 N3 十六週</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: 藍染 indigo on cool washi paper; a sticky tab strip over a single centred column; 田字格 grids for writing. */
+:root{
+  --paper:#F2F4F7; --card:#FFFFFF; --ink:#1B2230; --muted:#5B6576; --line:#D8DEE8;
+  --ai:#24477A; --ai-soft:#E3EAF5; --yama:#C98E0E; --yama-soft:#FBF1D9;
+  --good:#2F7A4A; --good-soft:#E2F1E7; --bad:#B23A30; --bad-soft:#F8E4E1;
+  --f-display:"Klee One","Zen Kaku Gothic New","Noto Sans TC",serif;
+  --f-ja:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
+  --f-zh:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F141D; --card:#171F2C; --ink:#E6EBF2; --muted:#9AA5B6; --line:#2A3446;
+  --ai:#8FB2EA; --ai-soft:#1D2C45; --yama:#E9B949; --yama-soft:#3A2F14;
+  --good:#7CCB95; --good-soft:#163323; --bad:#F08D83; --bad-soft:#3D1D1A; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0F141D; --card:#171F2C; --ink:#E6EBF2; --muted:#9AA5B6; --line:#2A3446;
+  --ai:#8FB2EA; --ai-soft:#1D2C45; --yama:#E9B949; --yama-soft:#3A2F14;
+  --good:#7CCB95; --good-soft:#163323; --bad:#F08D83; --bad-soft:#3D1D1A; color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-zh);font-size:15px;line-height:1.6}
+:lang(ja),.ja{font-family:var(--f-ja)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:var(--card);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:20px 8px;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;justify-content:space-between}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(26px,5vw,34px);margin:0;line-height:1.15;text-wrap:balance}
+h1 small{display:block;font-family:var(--f-zh);font-size:13px;font-weight:400;color:var(--muted);letter-spacing:.04em;margin-top:4px}
+.countdown{font-size:13px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.countdown b{font-size:22px;color:var(--ai);font-family:var(--f-display)}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs a{flex:0 0 auto;padding:10px 14px;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;font-weight:500;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--ai);border-color:var(--ai)}
+nav.tabs a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--yama);outline-offset:2px}
+main .wrap{padding-block:20px 60px}
+section.view{display:flex;flex-direction:column;gap:18px}
+h2{font-family:var(--f-display);font-weight:600;font-size:22px;margin:0;text-wrap:balance}
+h3{font-size:16px;margin:0}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.note{background:var(--yama-soft);border-radius:10px;padding:12px 16px;font-size:14px}
+.note b{color:var(--yama)}
+.muted{color:var(--muted)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+button,.btn{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:8px 14px;cursor:pointer}
+button:hover{border-color:var(--ai)}
+button.primary{background:var(--ai);color:var(--card);border-color:var(--ai)}
+button.chip{padding:5px 12px;border-radius:999px;font-size:13px}
+button.chip[aria-pressed="true"]{background:var(--ai-soft);border-color:var(--ai);color:var(--ai);font-weight:700}
+select,input[type=text],textarea{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.say{border:none;background:none;padding:2px 6px;color:var(--ai);font-size:15px}
+.say::before{content:"▶"}
+/* today */
+.blocks{display:flex;flex-direction:column;gap:8px}
+.block{display:grid;grid-template-columns:24px 64px 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--line);border-radius:8px}
+.block input{margin-top:4px;width:18px;height:18px;accent-color:var(--ai)}
+.block .min{font-variant-numeric:tabular-nums;color:var(--ai);font-weight:700}
+.block.done{opacity:.55}
+.block.done .what{text-decoration:line-through}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.stat{border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.stat .n{font-family:var(--f-display);font-size:26px;color:var(--ai);font-variant-numeric:tabular-nums}
+.stat .l{font-size:12px;color:var(--muted)}
+/* plan */
+.phase{font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--ai-soft);color:var(--ai)}
+.phase.p0{background:var(--yama-soft);color:var(--yama)}
+.week{border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.week summary{list-style:none;cursor:pointer;padding:12px 16px;display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center}
+.week summary::-webkit-details-marker{display:none}
+.week .wn{font-family:var(--f-display);font-size:20px;color:var(--ai);font-variant-numeric:tabular-nums}
+.week .wt{min-width:0}
+.week .wt b{display:block}
+.week .wt span{font-size:13px;color:var(--muted)}
+.week.now{border-color:var(--ai);box-shadow:0 0 0 1px var(--ai)}
+.week .body{padding:0 16px 16px 78px;display:flex;flex-direction:column;gap:8px}
+.week .body dl{display:grid;grid-template-columns:72px 1fr;gap:6px 10px;margin:0}
+.week .body dt{color:var(--muted);font-size:13px}
+.week .body dd{margin:0;min-width:0}
+.prog{height:6px;background:var(--line);border-radius:3px;overflow:hidden;width:60px}
+.prog i{display:block;height:100%;background:var(--good)}
+.tasks label{display:flex;gap:8px;align-items:flex-start}
+.tasks input{margin-top:5px;accent-color:var(--good)}
+@media (max-width:560px){.week .body{padding-left:16px}.week .body dl{grid-template-columns:1fr}.week .body dt{margin-top:4px}}
+/* flashcards */
+.deckbar{display:flex;gap:8px;flex-wrap:wrap}
+.card{min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:28px 28px;background-position:-1px -1px}
+.card .face{font-family:var(--f-display);font-size:clamp(56px,14vw,92px);line-height:1.1;background:var(--card);padding:4px 16px;border-radius:8px}
+.card .face.long{font-size:clamp(34px,8vw,52px)}
+.card .back{background:var(--card);padding:8px 16px;border-radius:8px;display:flex;flex-direction:column;gap:4px}
+.card .back .rd{font-size:22px;color:var(--ai)}
+.card .back .mn{font-size:18px}
+.card .back .ex{font-size:14px;color:var(--muted)}
+.grades{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.grades button{padding:12px 6px}
+.g0{border-color:var(--bad)!important;color:var(--bad)}
+.g1{border-color:var(--yama)!important;color:var(--yama)}
+.g2{border-color:var(--good)!important;color:var(--good)}
+.grades small{display:block;font-size:11px;color:var(--muted)}
+/* kana table */
+.kgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.kgrid.y{grid-template-columns:repeat(3,1fr)}
+.k{border:1px solid var(--line);border-radius:8px;background:var(--card);padding:6px 2px;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+.k .c{font-family:var(--f-display);font-size:26px;line-height:1.2;display:block}
+.k .r{font-size:12px;color:var(--muted)}
+.k.empty{visibility:hidden}
+/* grammar */
+.gram{display:flex;flex-direction:column;gap:10px}
+.gp{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:12px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 12px}
+.gp .pat{font-family:var(--f-ja);font-weight:700;font-size:17px;color:var(--ai)}
+.gp .lv{font-size:12px;color:var(--muted);align-self:center}
+.gp .ex{grid-column:1/-1;font-family:var(--f-ja)}
+.gp .tr{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.gp .mean{grid-column:1/-1}
+.gp.quiz .ex{filter:blur(6px);cursor:pointer}
+.gp.quiz .ex.show{filter:none}
+/* talk */
+.lines{display:flex;flex-direction:column;gap:8px}
+.ln{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.ln .who{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;background:var(--ai-soft);color:var(--ai)}
+.ln.b .who{background:var(--yama-soft);color:var(--yama)}
+.ln .jp{font-family:var(--f-ja);font-size:17px}
+.ln .kn{font-size:12px;color:var(--muted);font-family:var(--f-ja)}
+.ln .zh{font-size:13px;color:var(--muted)}
+.shadow .ln.me .jp,.shadow .ln.me .kn{filter:blur(7px);cursor:pointer}
+.shadow .ln.me.show .jp,.shadow .ln.me.show .kn{filter:none}
+/* write */
+.pad-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+canvas#pad{width:min(300px,100%);aspect-ratio:1;max-width:100%;border:2px solid var(--ai);border-radius:6px;touch-action:none;background:var(--card)}
+.genko{width:100%;min-height:200px;font-family:var(--f-ja);font-size:17px;line-height:2;background-image:linear-gradient(transparent calc(2em - 1px),var(--line) 1px);background-size:100% 2em;background-attachment:local}
+.flex1{flex:1 1 260px;min-width:0}
+table.ref{border-collapse:collapse;width:100%;font-size:14px}
+table.ref td,table.ref th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.scroll{overflow-x:auto}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <h1>日文 N3 十六週<small>2026年11月9日 → 2027年2月28日 · 每日約 1.5–2 小時</small></h1>
+  <div class="countdown" id="countdown"></div>
+</div></header>
+<nav class="tabs" aria-label="分頁"><div class="wrap" id="tabs">
+  <a href="#today">今日</a><a href="#plan">16 週日程</a><a href="#cards">字卡溫習</a><a href="#kana">假名表</a><a href="#grammar">文法</a><a href="#talk">會話練習</a><a href="#write">書寫</a>
+</div></nav>
+
+<main><div class="wrap">
+
+<section class="view" id="v-today">
+  <div>
+    <div class="eyebrow" id="today-date"></div>
+    <h2 id="today-title"></h2>
+    <p class="muted" id="today-focus" style="margin:4px 0 0"></p>
+  </div>
+  <div class="stats" id="today-stats"></div>
+  <div class="panel">
+    <div class="row" style="justify-content:space-between;margin-bottom:10px"><h3>今日功課</h3><span class="muted" id="today-mins"></span></div>
+    <div class="blocks" id="today-blocks"></div>
+  </div>
+  <div class="note"><b>點樣用：</b>每朝先開「字卡溫習」清晒到期卡（約 20 分鐘），之後跟住上面嘅次序做。做完一項就剔。寫好嘅作文可以貼返落呢個對話，叫我幫你改。進度只會儲存喺你而家用緊嘅瀏覽器。</div>
+</section>
+
+<section class="view" id="v-plan" hidden>
+  <div><h2>16 週日程</h2><p class="muted" style="margin:4px 0 0">四個階段：假名 → N5 → N4 → N3。每週撳開睇重點同功課，做完就剔。</p></div>
+  <div class="note"><b>坦白講：</b>完全由零開始，一般要 450–700 小時先到 N3；識中文嘅人因為漢字優勢可以快好多，但 16 週 × 每日 2 小時 ≈ 220 小時仍然好進取。呢個日程嘅目標係：2 月底前<b>學完一輪 N3 文法</b>、穩固 N4、識約 450 漢字同 2,000 詞彙。JLPT 每年只喺 7 月同 12 月第一個星期日考，2026 年 12 月 6 日太早，建議目標 <b>2027 年 7 月 4 日 N3</b>（香港一般 3–4 月報名，請留意官方公佈），3–6 月用嚟補詞彙同做真題。</div>
+  <div id="weeks" style="display:flex;flex-direction:column;gap:10px"></div>
+  <div class="panel">
+    <h3 style="margin-bottom:8px">建議教材（配合本工具）</h3>
+    <div class="scroll"><table class="ref">
+      <tr><th>階段</th><th>主教材</th><th>補充</th></tr>
+      <tr><td>第 1–11 週</td><td>《大家的日本語 初級 I・II》（第 1–50 課）或《GENKI I・II》</td><td>NHK「やさしい日本語」、YouTube 跟讀</td></tr>
+      <tr><td>第 12–16 週</td><td>《TRY! N3》或《新完全マスター文法 N3》</td><td>《新完全マスター 漢字／語彙 N3》、NHK News Web Easy</td></tr>
+      <tr><td>考試前</td><td>JLPT 官方 N3 真題（日本語能力試驗 公式問題集）</td><td>聽解每日 15 分鐘</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<section class="view" id="v-cards" hidden>
+  <div><h2>字卡溫習</h2><p class="muted" style="margin:4px 0 0">間隔重複：記得嘅卡會隔得愈嚟愈耐先再出現，唔記得嘅今日再嚟。</p></div>
+  <div class="deckbar" id="deckbar"></div>
+  <div class="row">
+    <label for="newlimit" class="muted">每日新卡</label>
+    <select id="newlimit"><option>10</option><option selected>20</option><option>30</option><option>50</option></select>
+    <label class="muted" style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="reverse"> 反轉（睇中文諗日文）</label>
+  </div>
+  <div class="card" id="card" tabindex="0" aria-live="polite"></div>
+  <div id="cardctl"></div>
+  <p class="muted" style="font-size:13px;margin:0">鍵盤：空白鍵 = 翻卡；1 / 2 / 3 = 唔記得 / 模糊 / 記得。</p>
+</section>
+
+<section class="view" id="v-kana" hidden>
+  <div><h2>假名表</h2><p class="muted" style="margin:4px 0 0">撳任何一個字聽發音。第一週先背平假名，第二週片假名。</p></div>
+  <div class="row"><button class="chip" aria-pressed="true" data-k="h">平假名</button><button class="chip" aria-pressed="false" data-k="k">片假名</button></div>
+  <div class="panel"><h3 style="margin-bottom:10px">清音</h3><div class="kgrid" id="k-basic"></div></div>
+  <div class="panel"><h3 style="margin-bottom:10px">濁音・半濁音</h3><div class="kgrid" id="k-daku"></div></div>
+  <div class="panel"><h3 style="margin-bottom:10px">拗音</h3><div class="kgrid y" id="k-yoon"></div></div>
+  <div class="note"><b>發音重點：</b>長音（おばさん 阿姨 ≠ おばあさん 婆婆）、促音っ（きて 來 ≠ きって 郵票）、拗音細字（びょういん 醫院 ≠ びよういん 美容院）。廣東話人最易錯係長短音，每次跟讀都要數拍子。片假名長音用「ー」：コーヒー、ラーメン。</div>
+</section>
+
+<section class="view" id="v-grammar" hidden>
+  <div><h2>文法</h2><p class="muted" style="margin:4px 0 0">由 N5 到 N3 嘅核心句型，依學習次序排列。開「默寫模式」會遮住例句，先自己講一次再撳開對答案。</p></div>
+  <div class="row" id="glevels"></div>
+  <div class="row"><label class="muted" style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="gquiz"> 默寫模式</label><input type="text" id="gsearch" placeholder="搜尋句型或中文" style="flex:1 1 180px"></div>
+  <div class="gram" id="gram"></div>
+</section>
+
+<section class="view" id="v-talk" hidden>
+  <div><h2>會話練習</h2><p class="muted" style="margin:4px 0 0">每段先聽兩次，再逐句跟讀（shadowing）。開「角色扮演」會遮住你嗰邊（B）嘅對白，你自己講出嚟再撳開核對。</p></div>
+  <div class="row"><select id="scene" aria-label="場景"></select>
+    <label class="muted" style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="roleplay"> 角色扮演</label>
+    <label class="muted" for="rate">語速</label><select id="rate"><option value="0.7">慢</option><option value="0.85" selected>中</option><option value="1">正常</option></select>
+    <button id="playall" class="primary">播放全段</button></div>
+  <div class="panel"><p class="muted" id="scene-note" style="margin:0 0 8px;font-size:13px"></p><div class="lines" id="lines"></div></div>
+  <div class="note" id="tts-note"><b>提示：</b>發音用你部機內置嘅日文語音。如果冇聲，請喺系統設定加入日文語音（iPhone：設定 → 輔助使用 → 語音內容 → 聲音 → 日文）。</div>
+</section>
+
+<section class="view" id="v-write" hidden>
+  <div><h2>書寫</h2><p class="muted" style="margin:4px 0 0">左邊練筆畫：跟住淡色字描，再關咗淡色字自己寫。右邊係每週作文題目。</p></div>
+  <div class="panel pad-wrap">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <canvas id="pad" width="600" height="600" aria-label="書寫練習格"></canvas>
+      <div class="row"><button id="pclear">清除</button><button id="pghost" aria-pressed="true">淡色字：開</button><button id="pnext">下一個</button></div>
+    </div>
+    <div class="flex1" style="display:flex;flex-direction:column;gap:10px">
+      <label for="pchar" class="muted">練習字（可以自己輸入）</label>
+      <input type="text" id="pchar" value="あ" maxlength="4">
+      <label for="pset" class="muted">練習組</label>
+      <select id="pset"><option value="h">平假名</option><option value="k">片假名</option><option value="n5">N5 漢字</option><option value="n4">N4 漢字</option><option value="n3">N3 漢字</option></select>
+      <div class="note" style="font-size:13px"><b>筆順規則：</b>由上至下、由左至右；橫先豎後；ぬ、め、ね 等要注意收筆打圈方向。日文漢字有啲同繁體唔同：<span lang="ja">気 / 駅 / 読 / 売 / 楽 / 関 / 経 / 変</span>，要用日文寫法。</div>
+    </div>
+  </div>
+  <div class="panel" style="display:flex;flex-direction:column;gap:10px">
+    <div class="row" style="justify-content:space-between"><h3>本週作文</h3><select id="wweek" aria-label="選擇週數"></select></div>
+    <p id="wprompt" style="margin:0"></p>
+    <p class="muted" id="whint" style="margin:0;font-size:13px"></p>
+    <textarea id="wtext" class="genko" lang="ja" placeholder="喺度用日文寫……"></textarea>
+    <div class="row" style="justify-content:space-between"><span class="muted" id="wcount"></span><button id="wcopy">複製全文</button></div>
+    <p class="muted" style="margin:0;font-size:13px">寫好之後複製，貼返落我哋嘅對話，我會逐句改並解釋文法。</p>
+  </div>
+</section>
+
+</div></main>
+
+<script>
+(function(){
+"use strict";
+/* ---------- storage ---------- */
+const KEY="jp-n3-v1";
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){S={}}
+S.srs=S.srs||{};S.tasks=S.tasks||{};S.daily=S.daily||{};S.newCount=S.newCount||{};S.essays=S.essays||{};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+/* ---------- dates ---------- */
+const START=new Date(2026,10,9); // Mon 9 Nov 2026
+const DAY=86400000;
+function dayNum(d){d=d||new Date();return Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()))/DAY)}
+const today=dayNum();
+const startN=dayNum(START);
+const dayIdx=today-startN; // 0 = day 1
+const curWeek=Math.min(16,Math.max(1,Math.floor(dayIdx/7)+1));
+const todayKey=new Date().toISOString().slice(0,10);
+function fmt(d){return (d.getMonth()+1)+"月"+d.getDate()+"日"}
+function weekRange(w){const a=new Date(START.getTime()+(w-1)*7*DAY),b=new Date(a.getTime()+6*DAY);return fmt(a)+"–"+fmt(b)}
+
+/* ---------- speech ---------- */
+let jaVoice=null;
+function pickVoice(){try{const v=speechSynthesis.getVoices();jaVoice=v.find(x=>/^ja/i.test(x.lang))||null}catch(e){}}
+try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+function say(t,rate,onend){
+  try{const u=new SpeechSynthesisUtterance(t);u.lang="ja-JP";if(jaVoice)u.voice=jaVoice;u.rate=rate||parseFloat(document.getElementById("rate").value)||.85;if(onend)u.onend=onend;speechSynthesis.speak(u)}catch(e){if(onend)onend()}
+}
+
+/* ---------- kana data ---------- */
+const H_BASIC="あa いi うu えe おo かka きki くku けke こko さsa しshi すsu せse そso たta ちchi つtsu てte とto なna にni ぬnu ねne のno はha ひhi ふfu へhe ほho まma みmi むmu めme もmo やya _ ゆyu _ よyo らra りri るru れre ろro わwa _ _ _ をwo んn _ _ _ _".split(" ");
+const H_DAKU="がga ぎgi ぐgu げge ごgo ざza じji ずzu ぜze ぞzo だda ぢji づzu でde どdo ばba びbi ぶbu べbe ぼbo ぱpa ぴpi ぷpu ぺpe ぽpo".split(" ");
+const H_YOON="きゃkya きゅkyu きょkyo しゃsha しゅshu しょsho ちゃcha ちゅchu ちょcho にゃnya にゅnyu にょnyo ひゃhya ひゅhyu ひょhyo みゃmya みゅmyu みょmyo りゃrya りゅryu りょryo ぎゃgya ぎゅgyu ぎょgyo じゃja じゅju じょjo びゃbya びゅbyu びょbyo ぴゃpya ぴゅpyu ぴょpyo".split(" ");
+function splitK(s){if(s==="_")return null;const m=s.match(/^([^\x00-\x7f]+)([a-z]+)$/);return{c:m[1],r:m[2]}}
+function toKata(s){return s.replace(/[ぁ-ゖ]/g,ch=>String.fromCharCode(ch.charCodeAt(0)+0x60))}
+const KANA_ALL=[].concat(H_BASIC,H_DAKU,H_YOON).map(splitK).filter(Boolean);
+
+/* ---------- kanji: 字|音|訓|意思|例|例讀|級 ---------- */
+const KANJI_RAW=`一|イチ|ひと(つ)|一|一人|ひとり|5
+二|ニ|ふた(つ)|二|二人|ふたり|5
+三|サン|みっ(つ)|三|三月|さんがつ|5
+四|シ|よ・よっ(つ)|四|四時|よじ|5
+五|ゴ|いつ(つ)|五|五分|ごふん|5
+六|ロク|むっ(つ)|六|六百|ろっぴゃく|5
+七|シチ|なな(つ)|七|七時|しちじ|5
+八|ハチ|やっ(つ)|八|八百屋|やおや|5
+九|キュウ・ク|ここの(つ)|九|九時|くじ|5
+十|ジュウ|とお|十|十日|とおか|5
+百|ヒャク||百|三百|さんびゃく|5
+千|セン|ち|千|千円|せんえん|5
+万|マン||萬|一万円|いちまんえん|5
+円|エン|まる(い)|圓、日圓|百円|ひゃくえん|5
+日|ニチ・ジツ|ひ・か|日、天|毎日|まいにち|5
+月|ゲツ・ガツ|つき|月|月曜日|げつようび|5
+火|カ|ひ|火|火曜日|かようび|5
+水|スイ|みず|水|水曜日|すいようび|5
+木|モク|き|木|木曜日|もくようび|5
+金|キン|かね|金、錢|お金|おかね|5
+土|ド|つち|土|土曜日|どようび|5
+曜|ヨウ||星期|日曜日|にちようび|5
+本|ホン|もと|書、本|日本|にほん|5
+人|ジン・ニン|ひと|人|日本人|にほんじん|5
+今|コン|いま|今|今日|きょう|5
+年|ネン|とし|年|来年|らいねん|5
+時|ジ|とき|時|時間|じかん|5
+分|フン・ブン|わ(かる)|分、明白|半分|はんぶん|5
+半|ハン|なか(ば)|半|三時半|さんじはん|5
+午|ゴ||午|午後|ごご|5
+前|ゼン|まえ|前|名前|なまえ|5
+後|ゴ・コウ|うし(ろ)・あと|後|後ろ|うしろ|5
+上|ジョウ|うえ・あ(がる)|上|上手|じょうず|5
+下|カ・ゲ|した・さ(がる)|下|地下鉄|ちかてつ|5
+中|チュウ|なか|中|中国|ちゅうごく|5
+外|ガイ|そと|外|外国人|がいこくじん|5
+右|ウ・ユウ|みぎ|右|右手|みぎて|5
+左|サ|ひだり|左|左側|ひだりがわ|5
+大|ダイ・タイ|おお(きい)|大|大学|だいがく|5
+小|ショウ|ちい(さい)|小|小学校|しょうがっこう|5
+高|コウ|たか(い)|高、貴|高校|こうこう|5
+安|アン|やす(い)|平、安|安心|あんしん|5
+新|シン|あたら(しい)|新|新聞|しんぶん|5
+古|コ|ふる(い)|舊|中古|ちゅうこ|5
+長|チョウ|なが(い)|長|社長|しゃちょう|5
+多|タ|おお(い)|多|多分|たぶん|5
+少|ショウ|すく(ない)・すこ(し)|少|少し|すこし|5
+白|ハク|しろ(い)|白|面白い|おもしろい|5
+名|メイ|な|名|名前|なまえ|5
+先|セン|さき|先|先生|せんせい|5
+生|セイ|い(きる)・う(まれる)|生|学生|がくせい|5
+学|ガク|まな(ぶ)|學|学校|がっこう|5
+校|コウ||校|学校|がっこう|5
+友|ユウ|とも|友|友達|ともだち|5
+気|キ||氣|天気|てんき|5
+天|テン|あめ|天|天気|てんき|5
+雨|ウ|あめ|雨|大雨|おおあめ|5
+山|サン|やま|山|富士山|ふじさん|5
+川|セン|かわ|河|川|かわ|5
+花|カ|はな|花|花火|はなび|5
+空|クウ|そら|天空|空港|くうこう|5
+何|カ|なに・なん|甚麼|何時|なんじ|5
+毎|マイ||每|毎朝|まいあさ|5
+週|シュウ||週、星期|来週|らいしゅう|5
+間|カン|あいだ|間|時間|じかん|5
+見|ケン|み(る)|看|見物|けんぶつ|5
+聞|ブン|き(く)|聽、問|新聞|しんぶん|5
+読|ドク|よ(む)|讀|読書|どくしょ|5
+書|ショ|か(く)|寫|辞書|じしょ|5
+話|ワ|はな(す)|說話|電話|でんわ|5
+言|ゲン|い(う)|說|言葉|ことば|5
+食|ショク|た(べる)|食|食事|しょくじ|5
+飲|イン|の(む)|飲|飲み物|のみもの|5
+行|コウ|い(く)|去|銀行|ぎんこう|5
+来|ライ|く(る)|來|来月|らいげつ|5
+出|シュツ|で(る)・だ(す)|出|出口|でぐち|5
+入|ニュウ|はい(る)・い(れる)|入|入口|いりぐち|5
+休|キュウ|やす(む)|休|休み|やすみ|5
+買|バイ|か(う)|買|買い物|かいもの|5
+立|リツ|た(つ)|站|立つ|たつ|5
+会|カイ|あ(う)|會、見面|会社|かいしゃ|5
+東|トウ|ひがし|東|東京|とうきょう|5
+西|セイ|にし|西|関西|かんさい|5
+南|ナン|みなみ|南|南口|みなみぐち|5
+北|ホク|きた|北|北海道|ほっかいどう|5
+口|コウ|くち|口|人口|じんこう|5
+目|モク|め|眼|目|め|5
+耳|ジ|みみ|耳|耳|みみ|5
+手|シュ|て|手|上手|じょうず|5
+足|ソク|あし|腳、足夠|足りる|たりる|5
+父|フ|ちち|父|お父さん|おとうさん|5
+母|ボ|はは|母|お母さん|おかあさん|5
+男|ダン|おとこ|男|男の人|おとこのひと|5
+女|ジョ|おんな|女|女の子|おんなのこ|5
+子|シ|こ|子|子供|こども|5
+国|コク|くに|國|外国|がいこく|5
+語|ゴ|かた(る)|語|日本語|にほんご|5
+車|シャ|くるま|車|電車|でんしゃ|5
+電|デン||電|電話|でんわ|5
+駅|エキ||車站|駅前|えきまえ|5
+道|ドウ|みち|路|道|みち|5
+店|テン|みせ|店|店員|てんいん|5
+社|シャ||社|会社|かいしゃ|5
+自|ジ・シ|みずか(ら)|自己|自分|じぶん|4
+家|カ・ケ|いえ・うち|家|家族|かぞく|4
+近|キン|ちか(い)|近|近所|きんじょ|4
+遠|エン|とお(い)|遠|遠足|えんそく|4
+早|ソウ|はや(い)|早|早口|はやくち|4
+明|メイ|あか(るい)・あ(ける)|明|説明|せつめい|4
+暗|アン|くら(い)|暗|暗記|あんき|4
+開|カイ|あ(く)・ひら(く)|開|開店|かいてん|4
+閉|ヘイ|し(める)・と(じる)|關|閉店|へいてん|4
+始|シ|はじ(める)|開始|始まる|はじまる|4
+終|シュウ|お(わる)|完結|終電|しゅうでん|4
+思|シ|おも(う)|想|思い出|おもいで|4
+知|チ|し(る)|知|知識|ちしき|4
+住|ジュウ|す(む)|住|住所|じゅうしょ|4
+使|シ|つか(う)|使用|大使館|たいしかん|4
+作|サク|つく(る)|做、作|作文|さくぶん|4
+売|バイ|う(る)|賣|売り場|うりば|4
+教|キョウ|おし(える)|教|教室|きょうしつ|4
+習|シュウ|なら(う)|學習|練習|れんしゅう|4
+勉|ベン||勉|勉強|べんきょう|4
+強|キョウ|つよ(い)|強|強い|つよい|4
+弱|ジャク|よわ(い)|弱|弱点|じゃくてん|4
+考|コウ|かんが(える)|考慮|考え|かんがえ|4
+兄|キョウ|あに|哥哥|お兄さん|おにいさん|4
+弟|ダイ|おとうと|弟弟|兄弟|きょうだい|4
+姉|シ|あね|姊姊|お姉さん|おねえさん|4
+妹|マイ|いもうと|妹妹|姉妹|しまい|4
+親|シン|おや・した(しい)|親|両親|りょうしん|4
+持|ジ|も(つ)|拿、持有|気持ち|きもち|4
+待|タイ|ま(つ)|等|招待|しょうたい|4
+急|キュウ|いそ(ぐ)|急|急行|きゅうこう|4
+同|ドウ|おな(じ)|同|同じ|おなじ|4
+発|ハツ||發|出発|しゅっぱつ|4
+映|エイ|うつ(る)|映|映画|えいが|4
+画|ガ・カク||畫|計画|けいかく|4
+音|オン|おと|音|音楽|おんがく|4
+楽|ガク・ラク|たの(しい)|樂|楽しい|たのしい|4
+主|シュ|おも・ぬし|主|主人|しゅじん|4
+肉|ニク||肉|牛肉|ぎゅうにく|4
+魚|ギョ|さかな|魚|金魚|きんぎょ|4
+料|リョウ||料|料理|りょうり|4
+理|リ||理|理由|りゆう|4
+洋|ヨウ||洋|洋服|ようふく|4
+服|フク||衣服|洋服|ようふく|4
+着|チャク|き(る)・つ(く)|穿、到達|着物|きもの|4
+赤|セキ|あか(い)|紅|赤ちゃん|あかちゃん|4
+青|セイ|あお(い)|藍、青|青空|あおぞら|4
+黒|コク|くろ(い)|黑|黒板|こくばん|4
+色|ショク|いろ|顏色|色々|いろいろ|4
+朝|チョウ|あさ|早上|朝ご飯|あさごはん|4
+昼|チュウ|ひる|中午|昼休み|ひるやすみ|4
+夜|ヤ|よる|夜|今夜|こんや|4
+夕|セキ|ゆう|黃昏|夕方|ゆうがた|4
+方|ホウ|かた|方、方法|夕方|ゆうがた|4
+去|キョ|さ(る)|去、離開|去年|きょねん|4
+英|エイ||英|英語|えいご|4
+字|ジ||字|漢字|かんじ|4
+特|トク||特別|特急|とっきゅう|4
+別|ベツ|わか(れる)|分別|特別|とくべつ|4
+仕|シ|つか(える)|做事|仕事|しごと|4
+事|ジ|こと|事|大事|だいじ|4
+病|ビョウ|や(む)|病|病院|びょういん|4
+院|イン||院|病院|びょういん|4
+旅|リョ|たび|旅|旅行|りょこう|4
+館|カン||館|図書館|としょかん|4
+写|シャ|うつ(す)|拍、抄|写真|しゃしん|4
+真|シン|ま|真|真ん中|まんなか|4
+送|ソウ|おく(る)|送|送料|そうりょう|4
+借|シャク|か(りる)|借入|借金|しゃっきん|4
+貸|タイ|か(す)|借出|貸す|かす|4
+答|トウ|こた(える)|答|答え|こたえ|4
+問|モン|と(う)|問|問題|もんだい|4
+題|ダイ||題|宿題|しゅくだい|4
+試|シ|ため(す)|試|試験|しけん|4
+験|ケン||驗|経験|けいけん|4
+重|ジュウ|おも(い)|重|重要|じゅうよう|4
+軽|ケイ|かる(い)|輕|軽い|かるい|4
+悪|アク|わる(い)|壞|悪口|わるぐち|4
+注|チュウ|そそ(ぐ)|注|注意|ちゅうい|4
+意|イ||意|意味|いみ|4
+味|ミ|あじ|味|意味|いみ|4
+由|ユ・ユウ|よし|由|理由|りゆう|3
+彼|ヒ|かれ|他|彼女|かのじょ|3
+以|イ||以|以上|いじょう|3
+約|ヤク||約|予約|よやく|3
+変|ヘン|か(わる)|變|大変|たいへん|3
+化|カ|ば(ける)|化|文化|ぶんか|3
+必|ヒツ|かなら(ず)|必|必ず|かならず|3
+要|ヨウ|い(る)|要|必要|ひつよう|3
+決|ケツ|き(める)|決|決定|けってい|3
+定|テイ|さだ(める)|定|予定|よてい|3
+経|ケイ|へ(る)|經|経済|けいざい|3
+調|チョウ|しら(べる)|調查|調子|ちょうし|3
+連|レン|つ(れる)|連|連絡|れんらく|3
+絡|ラク|から(む)|絡|連絡|れんらく|3
+関|カン|せき|關|関係|かんけい|3
+係|ケイ|かかり|係|係員|かかりいん|3
+相|ソウ|あい|相|相談|そうだん|3
+談|ダン||談|相談|そうだん|3
+最|サイ|もっと(も)|最|最近|さいきん|3
+際|サイ|きわ|際|国際|こくさい|3
+結|ケツ|むす(ぶ)|結|結婚|けっこん|3
+果|カ|は(たす)|果|結果|けっか|3
+活|カツ||活|生活|せいかつ|3
+動|ドウ|うご(く)|動|運動|うんどう|3
+運|ウン|はこ(ぶ)|運|運転|うんてん|3
+転|テン|ころ(ぶ)|轉|自転車|じてんしゃ|3
+信|シン||信|信号|しんごう|3
+号|ゴウ||號|番号|ばんごう|3
+受|ジュ|う(ける)|受|受付|うけつけ|3
+付|フ|つ(ける)|附|受付|うけつけ|3
+取|シュ|と(る)|取|取引|とりひき|3
+引|イン|ひ(く)|拉|引っ越し|ひっこし|3
+払|フツ|はら(う)|付款|支払い|しはらい|3
+両|リョウ||兩|両方|りょうほう|3
+険|ケン|けわ(しい)|險|危険|きけん|3
+危|キ|あぶ(ない)|危|危ない|あぶない|3
+務|ム|つと(める)|務|事務所|じむしょ|3
+員|イン||員|会社員|かいしゃいん|3`;
+const KANJI=KANJI_RAW.split("\n").map(l=>{const p=l.split("|");return{k:p[0],on:p[1],kun:p[2],m:p[3],ex:p[4],exr:p[5],lv:+p[6]}});
+
+/* ---------- vocab: 語|讀|中文|級 ---------- */
+const VOCAB_RAW=`私|わたし|我|5
+あなた|あなた|你|5
+これ|これ|這個|5
+それ|それ|那個（近對方）|5
+あれ|あれ|那個（遠）|5
+どこ|どこ|哪裏|5
+だれ|だれ|誰|5
+いくら|いくら|多少錢|5
+今日|きょう|今日|5
+明日|あした|明天|5
+昨日|きのう|昨天|5
+今朝|けさ|今朝|5
+今晩|こんばん|今晚|5
+毎日|まいにち|每日|5
+朝ご飯|あさごはん|早餐|5
+水|みず|水|5
+お茶|おちゃ|茶|5
+天気|てんき|天氣|5
+雨|あめ|雨|5
+駅|えき|車站|5
+電車|でんしゃ|電車、火車|5
+会社|かいしゃ|公司|5
+学校|がっこう|學校|5
+先生|せんせい|老師、醫生|5
+学生|がくせい|學生|5
+友達|ともだち|朋友|5
+家族|かぞく|家人|5
+部屋|へや|房間|5
+トイレ|トイレ|洗手間|5
+お金|おかね|錢|5
+時間|じかん|時間|5
+仕事|しごと|工作|4
+休み|やすみ|休息、假期|5
+食べる|たべる|吃|5
+飲む|のむ|飲|5
+行く|いく|去|5
+来る|くる|來|5
+帰る|かえる|回去|5
+見る|みる|看|5
+聞く|きく|聽、問|5
+話す|はなす|說話|5
+読む|よむ|讀|5
+書く|かく|寫|5
+買う|かう|買|5
+待つ|まつ|等|5
+分かる|わかる|明白|5
+する|する|做|5
+起きる|おきる|起床|5
+寝る|ねる|睡|5
+働く|はたらく|工作（動詞）|5
+大きい|おおきい|大|5
+小さい|ちいさい|細|5
+高い|たかい|高、貴|5
+安い|やすい|便宜|5
+新しい|あたらしい|新|5
+古い|ふるい|舊|5
+暑い|あつい|熱（天氣）|5
+寒い|さむい|凍|5
+おいしい|おいしい|好味|5
+忙しい|いそがしい|忙|5
+面白い|おもしろい|有趣|5
+好き|すき|喜歡|5
+嫌い|きらい|討厭|5
+上手|じょうず|擅長|5
+下手|へた|唔擅長|5
+元気|げんき|精神、健康|5
+静か|しずか|安靜|5
+有名|ゆうめい|有名|5
+便利|べんり|方便|5
+きれい|きれい|靚、乾淨|5
+とても|とても|非常|5
+少し|すこし|少少|5
+たくさん|たくさん|好多|5
+もう|もう|已經|5
+まだ|まだ|仲未|5
+いつも|いつも|經常|5
+ときどき|ときどき|有時|5
+一緒に|いっしょに|一齊|5
+ちょっと|ちょっと|少少、有啲|5
+すみません|すみません|唔好意思|5
+お願いします|おねがいします|麻煩你|5
+ありがとう|ありがとう|多謝|5
+病院|びょういん|醫院|4
+旅行|りょこう|旅行|4
+予約|よやく|預約|4
+準備|じゅんび|準備|4
+説明|せつめい|說明|4
+経験|けいけん|經驗|4
+趣味|しゅみ|興趣|4
+会議|かいぎ|會議|4
+都合|つごう|方便（時間安排）|4
+用事|ようじ|要辦嘅事|4
+約束|やくそく|約定、承諾|4
+意見|いけん|意見|4
+連絡|れんらく|聯絡|4
+相談|そうだん|商量|4
+集める|あつめる|收集|4
+決める|きめる|決定|4
+始める|はじめる|開始|4
+続ける|つづける|繼續|4
+調べる|しらべる|查|4
+届ける|とどける|送到|4
+間に合う|まにあう|趕得切|4
+手伝う|てつだう|幫手|4
+運ぶ|はこぶ|搬運|4
+慣れる|なれる|習慣|4
+困る|こまる|困擾|4
+壊れる|こわれる|壞|4
+遅れる|おくれる|遲到|4
+急ぐ|いそぐ|趕|4
+迎える|むかえる|迎接|4
+褒める|ほめる|讚|4
+叱る|しかる|鬧|4
+大切|たいせつ|重要|4
+大丈夫|だいじょうぶ|冇問題|4
+簡単|かんたん|簡單|4
+複雑|ふくざつ|複雜|4
+十分|じゅうぶん|足夠|4
+特に|とくに|特別係|4
+必ず|かならず|一定|4
+なかなか|なかなか|相當；（否定）總係唔|4
+きっと|きっと|一定（推測）|4
+たぶん|たぶん|大概|4
+やっと|やっと|終於|4
+だんだん|だんだん|漸漸|4
+しっかり|しっかり|穩陣、認真|3
+うっかり|うっかり|唔覺意|3
+ぎりぎり|ぎりぎり|啱啱好、差啲唔夠|3
+さっぱり|さっぱり|清爽；完全（唔）|3
+はっきり|はっきり|清楚|3
+いきなり|いきなり|突然|3
+ずっと|ずっと|一直|3
+結局|けっきょく|最終|3
+実は|じつは|其實|3
+確か|たしか|確實、好似係|3
+最近|さいきん|最近|3
+将来|しょうらい|將來|3
+環境|かんきょう|環境|3
+関係|かんけい|關係|3
+生活|せいかつ|生活|3
+習慣|しゅうかん|習慣|3
+原因|げんいん|原因|3
+結果|けっか|結果|3
+目的|もくてき|目的|3
+内容|ないよう|內容|3
+状態|じょうたい|狀態|3
+機会|きかい|機會|3
+努力|どりょく|努力|3
+我慢|がまん|忍耐|3
+感動|かんどう|感動|3
+緊張|きんちょう|緊張|3
+満足|まんぞく|滿足|3
+安心|あんしん|放心|3
+心配|しんぱい|擔心|3
+残念|ざんねん|可惜|3
+得意|とくい|擅長|3
+苦手|にがて|唔擅長、怕|3
+もったいない|もったいない|浪費、可惜|3
+恥ずかしい|はずかしい|尷尬、怕醜|3
+羨ましい|うらやましい|羨慕|3
+悔しい|くやしい|唔甘心|3
+増える|ふえる|增加|3
+減る|へる|減少|3
+比べる|くらべる|比較|3
+選ぶ|えらぶ|揀|3
+探す|さがす|搵|3
+確かめる|たしかめる|確認|3
+諦める|あきらめる|放棄|3
+任せる|まかせる|交託|3
+断る|ことわる|拒絕|3
+謝る|あやまる|道歉|3
+伝える|つたえる|轉達|3
+過ごす|すごす|度過|3
+片付ける|かたづける|執拾|3`;
+const VOCAB=VOCAB_RAW.split("\n").map(l=>{const p=l.split("|");return{w:p[0],r:p[1],m:p[2],lv:+p[3]}});
+
+/* ---------- grammar: 句型|級|說明|例句|譯 ---------- */
+const GRAM_RAW=`AはBです|N5|A 係 B（禮貌）|私は香港人です。|我係香港人。
+〜か|N5|句尾加か = 疑問|これは何ですか。|呢個係乜嘢？
+AのB|N5|A 嘅 B|これは私の傘です。|呢把係我嘅遮。
+〜も|N5|都、也|私も会社員です。|我都係公司職員。
+〜ます／ません／ました|N5|動詞禮貌形：現在／否定／過去|毎朝コーヒーを飲みます。|我每朝飲咖啡。
+〜を|N5|標示動作對象|パンを食べました。|食咗麵包。
+〜に／へ 行きます|N5|去（地方）|来週、東京へ行きます。|下星期去東京。
+〜で|N5|喺（地方）做；用（工具）|駅でバスに乗ります。|喺車站搭巴士。
+〜に（時間）|N5|喺（某時間）|七時に起きます。|七點起身。
+〜があります／います|N5|有（死物／生物）|部屋に猫がいます。|房入面有隻貓。
+〜ませんか／ましょう|N5|邀請／提議|一緒に昼ご飯を食べませんか。|一齊食晏好唔好？
+い形容詞〜くない|N5|形容詞否定|今日は寒くないです。|今日唔凍。
+な形容詞〜じゃない|N5|な形容詞否定|この町は静かじゃないです。|呢個鎮唔靜。
+〜たいです|N5|想做|日本で働きたいです。|想喺日本工作。
+〜てください|N5|請（做）|ここに名前を書いてください。|請喺度寫名。
+〜ています|N5|進行中／狀態|今、雨が降っています。|而家落緊雨。
+〜てもいいですか|N5|可唔可以|写真を撮ってもいいですか。|可唔可以影相？
+〜てはいけません|N5|唔可以|ここでタバコを吸ってはいけません。|呢度唔准食煙。
+〜ないでください|N5|請唔好|心配しないでください。|唔使擔心。
+〜なければなりません|N4|必須|明日までに出さなければなりません。|聽日之前一定要交。
+〜たことがあります|N4|曾經|富士山に登ったことがあります。|我爬過富士山。
+〜たり〜たりします|N4|又……又……（列舉）|週末は掃除したり、買い物したりします。|週末會打掃、買嘢之類。
+〜と思います|N4|我覺得|明日は晴れると思います。|我覺得聽日會天晴。
+〜つもりです|N4|打算|来年、日本語能力試験を受けるつもりです。|明年打算考日本語能力試。
+〜（よ）うと思っています|N4|諗住（意向）|会社を辞めようと思っています。|諗住辭職。
+可能形 〜られる／〜える|N4|能夠|漢字が少し読めます。|識讀少少漢字。
+〜ば／〜たら／〜と|N4|如果（條件）|安ければ、買います。|平就買。
+〜てあげる／くれる／もらう|N4|幫人做／人幫我做|友達が手伝ってくれました。|朋友幫咗我。
+〜そうです（様態）|N4|睇落好似|このケーキはおいしそうです。|呢個蛋糕睇落好好食。
+〜そうです（傳聞）|N4|聽講|天気予報によると、明日は雨だそうです。|天氣預報話聽日落雨。
+〜ようです／みたいです|N4|好似（推測）|誰もいないようです。|好似冇人喺度。
+〜らしい|N4|似乎、聽講；典型|彼は来月結婚するらしい。|聽講佢下個月結婚。
+受身 〜られる|N4|被動|先生に褒められました。|俾老師讚。
+使役 〜させる|N4|叫人做、俾人做|子供に野菜を食べさせます。|叫細路食菜。
+〜ながら|N4|一邊……一邊|音楽を聞きながら勉強します。|一邊聽歌一邊溫書。
+〜すぎる|N4|太過|昨日は飲みすぎました。|琴日飲得太多。
+〜やすい／にくい|N4|容易／難（做）|この本は読みやすいです。|呢本書好易讀。
+〜ので|N4|因為（客觀）|雨なので、出かけません。|因為落雨，唔出街。
+〜のに|N4|明明……卻|約束したのに、来ませんでした。|明明約好，佢都冇嚟。
+〜ように（目的）|N3|為咗（能夠）|忘れないように、メモします。|為咗唔好唔記得，寫低佢。
+〜ようにする|N3|盡量做到|毎日野菜を食べるようにしています。|我盡量每日食菜。
+〜ようになる|N3|變得（能夠）|日本語が話せるようになりました。|識講日文喇。
+〜ことにする|N3|決定（自己）|来月から毎朝走ることにしました。|決定下個月開始每朝跑步。
+〜ことになる|N3|（被安排）決定|大阪に転勤することになりました。|要調去大阪工作。
+〜はずだ|N3|應該係（推斷）|彼はもう着いたはずです。|佢應該已經到咗。
+〜わけだ|N3|怪不得、即係|毎日練習したから、上手なわけだ。|日日練，怪不得咁叻。
+〜わけではない|N3|並唔係|嫌いなわけではありません。|並唔係討厭。
+〜ばかり|N3|淨係；啱啱|弟はゲームばかりしています。|細佬淨係打機。
+〜たばかり|N3|啱啱做完|日本に来たばかりです。|啱啱嚟到日本。
+〜ところだ|N3|正要／正在／啱啱|今から出かけるところです。|而家正要出門。
+〜うちに|N3|趁……|熱いうちに食べてください。|趁熱食。
+〜て以来|N3|自從……|日本に来て以来、ずっと東京に住んでいます。|自從嚟日本，一直住東京。
+〜によって|N3|根據、由於、因……而異|人によって考え方が違います。|每個人諗法唔同。
+〜にとって|N3|對……嚟講|私にとって、家族が一番大切です。|對我嚟講，家人最重要。
+〜について|N3|關於|日本の文化について調べています。|研究緊日本文化。
+〜として|N3|作為|通訳として働いています。|做緊傳譯。
+〜に対して|N3|對於（對象）|お客様に対して失礼です。|對客人好無禮。
+〜っぽい|N3|有……感覺、容易|最近忘れっぽくなりました。|最近變得好易唔記得嘢。
+〜させられる（使役受身）|N3|被迫做|部長にお酒を飲まされました。|俾部長逼住飲酒。
+〜させていただく|N3|請容許我（謙讓）|本日は休ませていただきます。|今日請容許我休息。
+〜てほしい|N3|想（人）做|もっとゆっくり話してほしい。|想你講慢啲。
+〜ても|N3|即使|雨が降っても行きます。|就算落雨都去。
+〜かどうか|N3|係咪|行けるかどうか分かりません。|唔知去唔去到。
+〜ば〜ほど|N3|愈……愈|練習すればするほど上手になる。|愈練愈叻。
+〜おかげで／せいで|N3|托……福／都係因為|先生のおかげで合格できました。|多得老師先合格。`;
+const GRAM=GRAM_RAW.split("\n").map(l=>{const p=l.split("|");return{p:p[0],lv:p[1],m:p[2],ex:p[3],tr:p[4]}});
+
+/* ---------- conversation scenes ---------- */
+const SCENES=[
+ {t:"自我介紹（第 1–2 週）",n:"第一次見面。記住結尾一定講「よろしくお願いします」。",l:[
+  ["A","はじめまして。田中です。","はじめまして。たなかです。","初次見面，我姓田中。"],
+  ["B","はじめまして。ジェイソンです。香港から来ました。","はじめまして。ジェイソンです。ほんこんからきました。","初次見面，我係 Jason，從香港嚟。"],
+  ["A","お仕事は何ですか。","おしごとはなんですか。","你做咩工作？"],
+  ["B","会社員です。IT の会社で働いています。","かいしゃいんです。アイティーのかいしゃではたらいています。","我係公司職員，喺 IT 公司做嘢。"],
+  ["A","日本語が上手ですね。","にほんごがじょうずですね。","你日文好好喎。"],
+  ["B","いいえ、まだまだです。今、勉強しています。","いいえ、まだまだです。いま、べんきょうしています。","邊度呀，仲差好遠。而家學緊。"],
+  ["A","そうですか。よろしくお願いします。","そうですか。よろしくおねがいします。","係咩。請多多指教。"],
+  ["B","こちらこそ、よろしくお願いします。","こちらこそ、よろしくおねがいします。","我先要請你多多指教。"]]},
+ {t:"便利店（第 3 週）",n:"店員講嘢好快，先聽得出關鍵字：袋、温め、ポイントカード。",l:[
+  ["A","いらっしゃいませ。","いらっしゃいませ。","歡迎光臨。"],
+  ["A","お弁当、温めますか。","おべんとう、あたためますか。","便當要唔要叮熱？"],
+  ["B","はい、お願いします。","はい、おねがいします。","要，麻煩你。"],
+  ["A","袋はご利用ですか。","ふくろはごりようですか。","要唔要膠袋？"],
+  ["B","いいえ、大丈夫です。","いいえ、だいじょうぶです。","唔使喇。"],
+  ["A","ポイントカードはお持ちですか。","ポイントカードはおもちですか。","有冇積分卡？"],
+  ["B","持っていません。","もっていません。","冇。"],
+  ["A","六百八十円です。","ろっぴゃくはちじゅうえんです。","680 円。"],
+  ["B","カードで払えますか。","カードではらえますか。","可唔可以用卡俾？"]]},
+ {t:"餐廳點餐（第 4 週）",n:"「〜をください」「〜にします」都係點餐常用。",l:[
+  ["A","何名様ですか。","なんめいさまですか。","幾多位？"],
+  ["B","二人です。","ふたりです。","兩位。"],
+  ["A","ご注文はお決まりですか。","ごちゅうもんはおきまりですか。","決定咗點咩未？"],
+  ["B","このラーメンを二つください。","このラーメンをふたつください。","呢個拉麵要兩碗。"],
+  ["A","お飲み物はいかがですか。","おのみものはいかがですか。","要唔要飲品？"],
+  ["B","じゃあ、ビールを一つと、お水をお願いします。","じゃあ、ビールをひとつと、おみずをおねがいします。","噉要一杯啤酒同水。"],
+  ["B","すみません、お会計をお願いします。","すみません、おかいけいをおねがいします。","唔該，埋單。"]]},
+ {t:"問路・搭車（第 5–6 週）",n:"方向詞：まっすぐ（直行）、右／左に曲がる、〜の隣、〜の前。",l:[
+  ["B","すみません、新宿駅はどこですか。","すみません、しんじゅくえきはどこですか。","唔好意思，新宿站喺邊？"],
+  ["A","この道をまっすぐ行って、二つ目の信号を右に曲がってください。","このみちをまっすぐいって、ふたつめのしんごうをみぎにまがってください。","沿呢條路直行，第二個燈位轉右。"],
+  ["B","歩いて何分ぐらいかかりますか。","あるいてなんぷんぐらいかかりますか。","行路大概要幾耐？"],
+  ["A","十分ぐらいです。","じゅっぷんぐらいです。","十分鐘左右。"],
+  ["B","この電車は渋谷に止まりますか。","このでんしゃはしぶやにとまりますか。","呢班車停唔停澀谷？"],
+  ["A","いいえ、次の各駅停車に乗ってください。","いいえ、つぎのかくえきていしゃにのってください。","唔停，請搭下一班每站停嘅車。"]]},
+ {t:"酒店入住（第 9 週）",n:"開始聽到敬語：〜でございます、お〜ください。",l:[
+  ["B","チェックインをお願いします。予約したジェイソンです。","チェックインをおねがいします。よやくしたジェイソンです。","我想 check in，預約咗，叫 Jason。"],
+  ["A","ジェイソン様ですね。パスポートをお願いいたします。","ジェイソンさまですね。パスポートをおねがいいたします。","Jason 先生，麻煩俾護照我。"],
+  ["A","お部屋は八階でございます。朝食は七時から十時までです。","おへやははっかいでございます。ちょうしょくはしちじからじゅうじまでです。","房間喺八樓。早餐七點至十點。"],
+  ["B","荷物を預かってもらえますか。","にもつをあずかってもらえますか。","可唔可以幫我寄存行李？"],
+  ["A","かしこまりました。","かしこまりました。","明白。"],
+  ["B","Wi-Fi のパスワードを教えてください。","ワイファイのパスワードをおしえてください。","請話我知 Wi-Fi 密碼。"]]},
+ {t:"同事閒聊・週末（第 10 週）",n:"普通形對話：朋友同事之間唔使用です・ます。",l:[
+  ["A","週末、何してた？","しゅうまつ、なにしてた？","週末做咗咩？"],
+  ["B","友達と鎌倉に行ってきた。すごく楽しかったよ。","ともだちとかまくらにいってきた。すごくたのしかったよ。","同朋友去咗鎌倉，好開心。"],
+  ["A","いいなあ。天気、大丈夫だった？","いいなあ。てんき、だいじょうぶだった？","好喎。天氣 OK 嗎？"],
+  ["B","ちょっと寒かったけど、晴れてたよ。","ちょっとさむかったけど、はれてたよ。","有啲凍，不過天晴。"],
+  ["A","今度、一緒に行こうよ。","こんど、いっしょにいこうよ。","下次一齊去啦。"],
+  ["B","うん、ぜひ。","うん、ぜひ。","好呀，一定。"]]},
+ {t:"睇醫生（第 11 週）",n:"描述症狀：〜が痛い、熱がある、〜から（從幾時開始）。",l:[
+  ["A","今日はどうしましたか。","きょうはどうしましたか。","今日有咩唔舒服？"],
+  ["B","昨日の夜から頭が痛くて、熱もあります。","きのうのよるからあたまがいたくて、ねつもあります。","由琴晚開始頭痛，仲有發燒。"],
+  ["A","咳は出ますか。","せきはでますか。","有冇咳？"],
+  ["B","少し出ます。","すこしでます。","有少少。"],
+  ["A","風邪ですね。薬を出しますから、ゆっくり休んでください。","かぜですね。くすりをだしますから、ゆっくりやすんでください。","係傷風。開藥俾你，好好休息。"],
+  ["B","お風呂に入ってもいいですか。","おふろにはいってもいいですか。","可唔可以沖涼？"],
+  ["A","熱が下がるまで、やめたほうがいいですね。","ねつがさがるまで、やめたほうがいいですね。","退燒之前最好唔好。"]]},
+ {t:"向上司請假（第 15 週）",n:"N3 程度敬語：〜させていただけませんか、申し訳ありません。",l:[
+  ["B","部長、今、少しよろしいでしょうか。","ぶちょう、いま、すこしよろしいでしょうか。","部長，而家方唔方便傾兩句？"],
+  ["A","うん、どうした？","うん、どうした？","嗯，咩事？"],
+  ["B","実は、来週の金曜日に休ませていただきたいのですが。","じつは、らいしゅうのきんようびにやすませていただきたいのですが。","其實，我想下星期五請一日假。"],
+  ["A","金曜日か。会議があったよね。","きんようびか。かいぎがあったよね。","星期五？有會議喎。"],
+  ["B","申し訳ありません。資料は木曜日までに準備しておきます。","もうしわけありません。しりょうはもくようびまでにじゅんびしておきます。","非常抱歉。資料我會喺星期四前準備好。"],
+  ["A","分かった。じゃあ、田中さんに伝えておいて。","わかった。じゃあ、たなかさんにつたえておいて。","明白。噉你同田中講聲。"],
+  ["B","ありがとうございます。よろしくお願いいたします。","ありがとうございます。よろしくおねがいいたします。","多謝，麻煩晒。"]]}
+];
+
+/* ---------- 16-week plan ---------- */
+const PLAN=[
+ {ph:"假名",f:"平假名 + 發音",g:"です／か／の／も；自我介紹",k:"—",v:"約 60（打招呼、數字）",w:"每日抄平假名兩次；第 7 日默寫全表",s:"跟讀「自我介紹」，錄音自聽",t:["背熟 46 個平假名（字卡溫習）","掌握濁音、拗音、長音、促音","可以用假名寫出自己名同國籍","錄一段 30 秒自我介紹"]},
+ {ph:"假名",f:"片假名 + 數字時間",g:"これ／それ／あれ；數字、時間、價錢",k:"一〜十、日月火水木金土（17 字）",v:"累計 150",w:"用假名寫 5 句自我介紹",s:"練講時間同價錢；便利店會話",t:["背熟 46 個片假名","識讀自己常用嘅外來語（コーヒー、パソコン…）","數 1–10000、講時間","首 17 個漢字"]},
+ {ph:"N5",f:"動詞ます形同助詞",g:"〜ます／ません／ました；を・に・へ・で",k:"N5 第 1 組（累計 40）",v:"累計 300",w:"寫「我嘅一日」8 句",s:"便利店會話；描述一日作息",t:["教材第 1–6 課","動詞三類分辨","每日 20 張新字卡","會話：便利店"]},
+ {ph:"N5",f:"形容詞同存在句",g:"い／な形容詞；あります／います；位置詞",k:"N5 第 2 組（累計 60）",v:"累計 450",w:"介紹你住嘅地方（屋企、附近）",s:"餐廳點餐",t:["教材第 7–12 課","形容詞現在／過去／否定","會話：餐廳點餐","寫作文並請 Claude 修改"]},
+ {ph:"N5",f:"て形",g:"〜てください；〜ています；〜てもいい／〜てはいけない",k:"N5 第 3 組（累計 80）",v:"累計 600",w:"寫一封短信請朋友幫手",s:"問路",t:["教材第 13–17 課","背熟て形變化規則","會話：問路","聽 NHK やさしい日本語 3 次"]},
+ {ph:"N5",f:"普通形同 ない／た形",g:"ない形；た形；〜たことがある；〜たい",k:"N5 完成（累計 100）",v:"累計 800",w:"寫「我最難忘嘅旅行」",s:"用普通形同朋友傾偈",t:["教材第 18–21 課","N5 漢字 100 個溫完一輪","普通形 ↔ 禮貌形互換練習","做一份 N5 文法練習卷"]},
+ {ph:"N5",f:"比較、意見、打算",g:"〜より／一番；〜と思う；〜つもり",k:"N4 第 1 組（累計 120）",v:"累計 950",w:"寫「明年嘅計劃」",s:"講自己意見同計劃",t:["教材第 22–25 課（初級 I 完）","聖誕週：可減半份量，但字卡唔好停","會話：講計劃"]},
+ {ph:"複習",f:"N5 總複習 + 模擬試",g:"重溫第 1–7 週所有句型",k:"重溫 120 字",v:"重溫",w:"重寫第 3–7 週作文，改正錯誤",s:"重練全部已學會話",t:["做一份 N5 模擬試（計時）","搵出錯得最多嘅 3 個文法點重溫","新年週：每日最少 30 分鐘字卡"]},
+ {ph:"N4",f:"可能形、意向形、條件",g:"可能形；〜（よ）う；〜ば／〜たら／〜と",k:"N4 第 2 組（累計 170）",v:"累計 1,150",w:"寫「如果我住喺日本……」",s:"酒店入住",t:["初級 II 第 26–30 課","四種條件句分別","會話：酒店"]},
+ {ph:"N4",f:"授受、推測",g:"あげる／くれる／もらう；〜そう／〜よう／〜らしい",k:"N4 第 3 組（累計 220）",v:"累計 1,350",w:"寫「朋友幫過我嘅一件事」",s:"同事閒聊（普通形）",t:["初級 II 第 31–38 課","授受動詞方向圖畫一次","會話：週末閒聊","開始每日睇 1 篇 NHK News Web Easy"]},
+ {ph:"N4",f:"受身、使役、敬語入門",g:"〜られる；〜させる；尊敬語／謙讓語基礎",k:"N4 完成（累計 300）",v:"累計 1,550",w:"寫「我公司嘅介紹」（用敬語）",s:"睇醫生",t:["初級 II 第 39–50 課（完）","做一份 N4 模擬試","會話：睇醫生"]},
+ {ph:"N3",f:"目的、變化、決定",g:"〜ように；〜ようにする／なる；〜ことにする／なる",k:"N3 第 1 組（累計 340）",v:"累計 1,700",w:"寫「學日文之後我嘅改變」",s:"講自己習慣同決定",t:["N3 文法書第 1–2 章","N3 詞彙書開始","每日讀 1 篇短文"]},
+ {ph:"N3",f:"推斷同時間點",g:"〜はず；〜わけ；〜ばかり；〜ところ；〜うちに；〜て以来",k:"N3 第 2 組（累計 380）",v:"累計 1,850",w:"寫一篇 300 字日記",s:"影子跟讀 NHK 新聞 1 分鐘",t:["N3 文法書第 3–4 章","每週一次影子跟讀錄音對比","聽解練習每日 15 分鐘"]},
+ {ph:"N3",f:"書面語連接",g:"〜によって；〜にとって；〜について；〜として；〜に対して",k:"N3 第 3 組（累計 420）",v:"累計 2,000",w:"寫「香港同日本嘅分別」意見文",s:"表達同意／反對",t:["N3 文法書第 5–6 章","讀解：每日 1 篇 N3 長度文章","作文請 Claude 修改"]},
+ {ph:"N3",f:"敬語同口語語感",g:"使役受身；〜させていただく；〜てほしい；〜っぽい",k:"N3 第 4 組（累計 450）",v:"累計 2,100",w:"寫一封請假電郵（敬語）",s:"向上司請假",t:["N3 文法書第 7–8 章","會話：向上司請假","一次 15 分鐘日文對話（可以搵 Claude 或者語言交換）"]},
+ {ph:"N3",f:"總複習 + N3 模擬試",g:"重溫全部 N3 句型",k:"重溫全部",v:"重溫",w:"限時 30 分鐘寫 400 字作文",s:"5 分鐘即興講一個題目",t:["做一份完整 N3 模擬試（計時）","分析弱項，定 3–6 月補強計劃","決定報考 2027 年 7 月 N3"]}
+];
+
+/* ---------- daily routine ---------- */
+function routine(w){
+  const p=PLAN[w-1];
+  const kana=w<=2;
+  return[
+   {id:"srs",m:20,t:"字卡溫習",d:kana?"清晒到期假名卡，再加新卡":"清晒到期卡（漢字＋詞彙），再加新卡"},
+   {id:"gram",m:30,t:"教材／文法",d:"本週重點："+p.g},
+   {id:"write",m:20,t:"書寫",d:kana?"喺「書寫」用練習格描假名，每個寫 5 次":"抄寫今日新漢字 3 次；每週寫一篇作文："+p.w},
+   {id:"talk",m:20,t:"會話跟讀",d:p.s},
+   {id:"listen",m:15,t:"聽力",d:w<=6?"重聽本週會話，唔睇字幕":"NHK やさしい日本語／News Web Easy 一篇，先聽後讀"}
+  ];
+}
+
+/* ---------- decks ---------- */
+const DECKS={
+ hira:{name:"平假名",items:()=>KANA_ALL.map(x=>({id:"h:"+x.c,front:x.c,rd:x.r,mn:"",ex:"",speak:x.c}))},
+ kata:{name:"片假名",items:()=>KANA_ALL.map(x=>({id:"k:"+x.c,front:toKata(x.c),rd:x.r,mn:"",ex:"",speak:toKata(x.c)}))},
+ kanji:{name:"漢字",items:()=>KANJI.map(x=>({id:"j:"+x.k,front:x.k,rd:[x.on,x.kun].filter(Boolean).join("　/　"),mn:x.m+"（N"+x.lv+"）",ex:x.ex+"（"+x.exr+"）",speak:x.exr}))},
+ vocab:{name:"詞彙",items:()=>VOCAB.map(x=>({id:"v:"+x.w,front:x.w,rd:x.r,mn:x.m+"（N"+x.lv+"）",ex:"",speak:x.r}))}
+};
+let deck=curWeek<=1?"hira":curWeek<=2?"kata":"kanji";
+let queue=[],cur=null,flipped=false;
+
+function dueInfo(key){
+  const items=DECKS[key].items();let due=0,fresh=0;
+  items.forEach(c=>{const s=S.srs[c.id];if(!s)fresh++;else if(s.d<=today)due++});
+  return{due,fresh,total:items.length};
+}
+function newUsed(key){return(S.newCount[todayKey]||{})[key]||0}
+function buildQueue(){
+  const items=DECKS[deck].items();
+  const lim=+document.getElementById("newlimit").value;
+  const due=items.filter(c=>S.srs[c.id]&&S.srs[c.id].d<=today);
+  const remain=Math.max(0,lim-newUsed(deck));
+  const fresh=items.filter(c=>!S.srs[c.id]).slice(0,remain);
+  queue=due.sort(()=>Math.random()-.5).concat(fresh);
+  nextCard();
+}
+function nextCard(){cur=queue.shift()||null;flipped=false;renderCard()}
+function renderCard(){
+  const el=document.getElementById("card"),ctl=document.getElementById("cardctl");
+  const rev=document.getElementById("reverse").checked&&(deck==="vocab"||deck==="kanji");
+  if(!cur){
+    const info=dueInfo(deck);
+    el.innerHTML='<div class="back"><div class="mn">今日「'+DECKS[deck].name+'」完成</div><div class="ex">未學：'+info.fresh+' 張・總數：'+info.total+' 張。聽日再嚟，或者揀另一副卡。</div></div>';
+    ctl.innerHTML="";return;
+  }
+  const isNew=!S.srs[cur.id];
+  const longF=cur.front.length>2;
+  const front=rev?'<div class="face long">'+esc(cur.mn||cur.rd)+'</div>':'<div class="face'+(longF?" long":"")+'" lang="ja">'+esc(cur.front)+'</div>';
+  let back="";
+  if(flipped){
+    back='<div class="back">'+(rev?'<div class="face'+(longF?" long":"")+'" lang="ja" style="padding:0">'+esc(cur.front)+'</div>':'')+
+      '<div class="rd" lang="ja">'+esc(cur.rd)+' <button class="say" aria-label="播放發音" data-say="'+esc(cur.speak)+'"></button></div>'+
+      (cur.mn&&!rev?'<div class="mn">'+esc(cur.mn)+'</div>':'')+(cur.ex?'<div class="ex" lang="ja">'+esc(cur.ex)+'</div>':'')+'</div>';
+  }
+  el.innerHTML='<span class="eyebrow">'+(isNew?"新卡":"溫習")+" · 仲有 "+queue.length+' 張</span>'+front+back;
+  if(!flipped){ctl.innerHTML='<button class="primary" style="width:100%;padding:12px" id="flip">翻卡</button>';document.getElementById("flip").onclick=flip}
+  else{
+    const s=S.srs[cur.id]||{i:0,e:2.5,r:0};
+    const nx=g=>{const t=calc(s,g);return t.i===0?"今日再嚟":t.i+" 日後"};
+    ctl.innerHTML='<div class="grades"><button class="g0" data-g="0">唔記得<small>'+nx(0)+'</small></button><button class="g1" data-g="1">模糊<small>'+nx(1)+'</small></button><button class="g2" data-g="2">記得<small>'+nx(2)+'</small></button></div>';
+    ctl.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>grade(+b.dataset.g));
+  }
+}
+function calc(s,g){
+  let i=s.i,e=s.e,r=s.r;
+  if(g===0){return{i:0,e:Math.max(1.3,e-.2),r:0}}
+  if(g===1){i=r===0?1:Math.max(1,Math.round(i*1.2));return{i,e:Math.max(1.3,e-.15),r:r+1}}
+  i=r===0?1:r===1?3:Math.round(i*e);return{i,e,r:r+1};
+}
+function flip(){if(!cur)return;flipped=true;renderCard();if(!document.getElementById("reverse").checked)say(cur.speak,.8)}
+function grade(g){
+  if(!cur)return;
+  const isNew=!S.srs[cur.id];
+  if(isNew){S.newCount[todayKey]=S.newCount[todayKey]||{};S.newCount[todayKey][deck]=(S.newCount[todayKey][deck]||0)+1}
+  const s=S.srs[cur.id]||{i:0,e:2.5,r:0};const t=calc(s,g);
+  S.srs[cur.id]={i:t.i,e:t.e,r:t.r,d:today+t.i};save();
+  if(g===0){queue.splice(Math.min(queue.length,4),0,cur)}
+  nextCard();
+}
+function renderDeckbar(){
+  const bar=document.getElementById("deckbar");bar.innerHTML="";
+  Object.keys(DECKS).forEach(k=>{const info=dueInfo(k);const b=document.createElement("button");b.className="chip";b.setAttribute("aria-pressed",k===deck);
+    b.textContent=DECKS[k].name+"・到期 "+info.due;b.onclick=()=>{deck=k;renderDeckbar();buildQueue()};bar.appendChild(b)});
+}
+
+/* ---------- helpers ---------- */
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b){e.preventDefault();say(b.dataset.say)}});
+
+/* ---------- today ---------- */
+function renderToday(){
+  const d=new Date();
+  const wd="日一二三四五六"[d.getDay()];
+  document.getElementById("today-date").textContent=(d.getMonth()+1)+"月"+d.getDate()+"日（星期"+wd+"）";
+  const p=PLAN[curWeek-1];
+  if(dayIdx<0){document.getElementById("today-title").textContent="聽日（11 月 9 日）正式開始";}
+  else if(dayIdx>=112){document.getElementById("today-title").textContent="16 週完成，進入考試準備期";}
+  else document.getElementById("today-title").textContent="第 "+curWeek+" 週・第 "+(dayIdx%7+1)+" 日："+p.f;
+  document.getElementById("today-focus").textContent="文法："+p.g+"　漢字："+p.k;
+  const rs=routine(curWeek);const done=S.daily[todayKey]||{};
+  const tot=rs.reduce((a,b)=>a+b.m,0);
+  document.getElementById("today-mins").textContent="共 "+tot+" 分鐘";
+  const box=document.getElementById("today-blocks");box.innerHTML="";
+  rs.forEach(r=>{const id="d-"+r.id;const div=document.createElement("label");div.className="block"+(done[r.id]?" done":"");div.htmlFor=id;
+    div.innerHTML='<input type="checkbox" id="'+id+'"'+(done[r.id]?" checked":"")+'><span class="min">'+r.m+' 分</span><span class="what"><b>'+esc(r.t)+'</b><br><span class="muted">'+esc(r.d)+'</span></span>';
+    div.querySelector("input").onchange=ev=>{S.daily[todayKey]=S.daily[todayKey]||{};S.daily[todayKey][r.id]=ev.target.checked;save();renderToday()};
+    box.appendChild(div)});
+  const learned=Object.keys(S.srs).length;
+  const kj=Object.keys(S.srs).filter(k=>k[0]==="j").length,vc=Object.keys(S.srs).filter(k=>k[0]==="v").length;
+  let due=0;Object.keys(DECKS).forEach(k=>due+=dueInfo(k).due);
+  const streak=(()=>{let n=0;for(let i=0;i<400;i++){const k=new Date(Date.now()-i*DAY).toISOString().slice(0,10);const v=S.daily[k];if(v&&Object.values(v).some(Boolean))n++;else if(i>0)break}return n})();
+  document.getElementById("today-stats").innerHTML=
+    stat(due,"今日到期卡")+stat(learned,"已學字卡")+stat(kj+" / "+KANJI.length,"工具內漢字")+stat(streak+" 日","連續學習");
+}
+function stat(n,l){return'<div class="stat"><div class="n">'+n+'</div><div class="l">'+l+'</div></div>'}
+
+/* ---------- plan ---------- */
+function renderPlan(){
+  const box=document.getElementById("weeks");box.innerHTML="";
+  PLAN.forEach((p,i)=>{const w=i+1;const tk=S.tasks[w]||{};const n=p.t.filter((_,j)=>tk[j]).length;
+    const det=document.createElement("details");det.className="week"+(w===curWeek?" now":"");if(w===curWeek)det.open=true;
+    det.innerHTML='<summary><span class="wn">W'+w+'</span><span class="wt"><b>'+esc(p.f)+'</b><span>'+weekRange(w)+(w===curWeek?"・本週":"")+'</span></span><span class="row" style="gap:8px"><span class="phase'+(p.ph==="假名"||p.ph==="複習"?" p0":"")+'">'+p.ph+'</span><span class="prog" title="'+n+'/'+p.t.length+'"><i style="width:'+(n/p.t.length*100)+'%"></i></span></span></summary>'+
+      '<div class="body"><dl><dt>文法</dt><dd>'+esc(p.g)+'</dd><dt>漢字</dt><dd>'+esc(p.k)+'</dd><dt>詞彙</dt><dd>'+esc(p.v)+'</dd><dt>書寫</dt><dd>'+esc(p.w)+'</dd><dt>會話</dt><dd>'+esc(p.s)+'</dd></dl>'+
+      '<div class="tasks">'+p.t.map((t,j)=>'<label><input type="checkbox" id="t'+w+'-'+j+'" data-w="'+w+'" data-j="'+j+'"'+(tk[j]?" checked":"")+'> '+esc(t)+'</label>').join("")+'</div></div>';
+    box.appendChild(det)});
+  box.querySelectorAll("input[data-w]").forEach(c=>c.onchange=()=>{const w=c.dataset.w;S.tasks[w]=S.tasks[w]||{};S.tasks[w][c.dataset.j]=c.checked;save();
+    const open=[...box.querySelectorAll("details")].map(d=>d.open);renderPlan();box.querySelectorAll("details").forEach((d,i)=>d.open=open[i])});
+}
+
+/* ---------- kana ---------- */
+let kmode="h";
+function renderKana(){
+  const conv=s=>kmode==="k"?toKata(s):s;
+  const fill=(id,arr)=>{document.getElementById(id).innerHTML=arr.map(s=>{const x=splitK(s);if(!x)return'<span class="k empty"></span>';const c=conv(x.c);return'<button class="k" data-say="'+c+'" lang="ja"><span class="c">'+c+'</span><span class="r">'+x.r+'</span></button>'}).join("")};
+  fill("k-basic",H_BASIC);fill("k-daku",H_DAKU);fill("k-yoon",H_YOON);
+}
+document.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{kmode=b.dataset.k;document.querySelectorAll("[data-k]").forEach(x=>x.setAttribute("aria-pressed",x===b));renderKana()});
+
+/* ---------- grammar ---------- */
+let glv=curWeek>=12?"N3":curWeek>=9?"N4":"N5";
+function renderGram(){
+  const lv=document.getElementById("glevels");
+  lv.innerHTML=["全部","N5","N4","N3"].map(l=>'<button class="chip" data-gl="'+l+'" aria-pressed="'+(l===glv)+'">'+l+'</button>').join("");
+  lv.querySelectorAll("[data-gl]").forEach(b=>b.onclick=()=>{glv=b.dataset.gl;renderGram()});
+  const q=document.getElementById("gsearch").value.trim();const quiz=document.getElementById("gquiz").checked;
+  const list=GRAM.filter(g=>(glv==="全部"||g.lv===glv)&&(!q||(g.p+g.m+g.ex+g.tr).includes(q)));
+  document.getElementById("gram").innerHTML=list.map(g=>'<div class="gp'+(quiz?" quiz":"")+'"><span class="pat" lang="ja">'+esc(g.p)+'</span><span class="lv">'+g.lv+'</span><span class="mean">'+esc(g.m)+'</span>'+
+    (quiz?'<span class="tr">'+esc(g.tr)+'</span><span class="ex" lang="ja" tabindex="0">'+esc(g.ex)+' <button class="say" aria-label="播放" data-say="'+esc(g.ex)+'"></button></span>':
+    '<span class="ex" lang="ja">'+esc(g.ex)+' <button class="say" aria-label="播放" data-say="'+esc(g.ex)+'"></button></span><span class="tr">'+esc(g.tr)+'</span>')+'</div>').join("")||'<p class="muted">搵唔到相關句型。</p>';
+  document.querySelectorAll(".gp.quiz .ex").forEach(x=>x.addEventListener("click",()=>x.classList.add("show")));
+}
+document.getElementById("gquiz").onchange=renderGram;document.getElementById("gsearch").oninput=renderGram;
+
+/* ---------- talk ---------- */
+const sceneSel=document.getElementById("scene");
+sceneSel.innerHTML=SCENES.map((s,i)=>'<option value="'+i+'">'+esc(s.t)+'</option>').join("");
+const defaultScene=curWeek<=2?0:curWeek<=3?1:curWeek<=4?2:curWeek<=8?3:curWeek<=9?4:curWeek<=10?5:curWeek<=14?6:7;
+sceneSel.value=defaultScene;
+function renderTalk(){
+  const s=SCENES[+sceneSel.value];document.getElementById("scene-note").textContent=s.n;
+  const box=document.getElementById("lines");box.className="lines"+(document.getElementById("roleplay").checked?" shadow":"");
+  box.innerHTML=s.l.map((l,i)=>'<div class="ln '+(l[0]==="B"?"b me":"a")+'" data-i="'+i+'"><span class="who">'+l[0]+'</span><span style="min-width:0"><div class="jp" lang="ja">'+esc(l[1])+'</div><div class="kn" lang="ja">'+esc(l[2])+'</div><div class="zh">'+esc(l[3])+'</div></span><button class="say" aria-label="播放" data-say="'+esc(l[1])+'"></button></div>').join("");
+  box.querySelectorAll(".ln.me").forEach(x=>x.addEventListener("click",e=>{if(!e.target.closest(".say"))x.classList.add("show")}));
+}
+sceneSel.onchange=renderTalk;document.getElementById("roleplay").onchange=renderTalk;
+document.getElementById("playall").onclick=()=>{try{speechSynthesis.cancel()}catch(e){}const s=SCENES[+sceneSel.value];let i=0;
+  const step=()=>{if(i>=s.l.length)return;const l=s.l[i++];say(l[1],null,()=>setTimeout(step,700))};step()};
+
+/* ---------- writing pad ---------- */
+const pad=document.getElementById("pad"),ctx=pad.getContext("2d");
+let ghost=true,drawing=false,strokes=[],setIdx=0;
+function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+function drawPad(){
+  const W=pad.width;ctx.clearRect(0,0,W,W);ctx.fillStyle=cssVar("--card");ctx.fillRect(0,0,W,W);
+  ctx.strokeStyle=cssVar("--line");ctx.lineWidth=2;ctx.setLineDash([12,10]);
+  ctx.beginPath();ctx.moveTo(W/2,0);ctx.lineTo(W/2,W);ctx.moveTo(0,W/2);ctx.lineTo(W,W/2);ctx.stroke();ctx.setLineDash([]);
+  if(ghost){ctx.fillStyle=cssVar("--line");ctx.font="440px 'Klee One', 'Zen Kaku Gothic New', serif";ctx.textAlign="center";ctx.textBaseline="middle";
+    const ch=document.getElementById("pchar").value||"";ctx.font=(ch.length>1?Math.floor(440/ch.length):440)+"px 'Klee One', 'Zen Kaku Gothic New', serif";ctx.fillText(ch,W/2,W/2+20)}
+  ctx.strokeStyle=cssVar("--ink");ctx.lineWidth=16;ctx.lineCap="round";ctx.lineJoin="round";
+  strokes.forEach(s=>{ctx.beginPath();s.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke()});
+}
+function pos(e){const r=pad.getBoundingClientRect();return[(e.clientX-r.left)*pad.width/r.width,(e.clientY-r.top)*pad.height/r.height]}
+pad.addEventListener("pointerdown",e=>{drawing=true;try{pad.setPointerCapture(e.pointerId)}catch(_){}strokes.push([pos(e)]);drawPad()});
+pad.addEventListener("pointermove",e=>{if(!drawing)return;strokes[strokes.length-1].push(pos(e));drawPad()});
+["pointerup","pointercancel"].forEach(t=>pad.addEventListener(t,()=>drawing=false));
+document.getElementById("pclear").onclick=()=>{strokes=[];drawPad()};
+document.getElementById("pghost").onclick=e=>{ghost=!ghost;e.target.textContent="淡色字："+(ghost?"開":"關");e.target.setAttribute("aria-pressed",ghost);drawPad()};
+function setList(){const v=document.getElementById("pset").value;
+  if(v==="h")return KANA_ALL.slice(0,46+0).map(x=>x.c).filter(c=>c.length===1);
+  if(v==="k")return KANA_ALL.map(x=>toKata(x.c)).filter(c=>c.length===1);
+  return KANJI.filter(k=>"n"+k.lv===v).map(k=>k.k)}
+document.getElementById("pnext").onclick=()=>{const l=setList();setIdx=(setIdx+1)%l.length;document.getElementById("pchar").value=l[setIdx];strokes=[];drawPad()};
+document.getElementById("pset").onchange=()=>{setIdx=0;document.getElementById("pchar").value=setList()[0];strokes=[];drawPad()};
+document.getElementById("pchar").oninput=()=>{strokes=[];drawPad()};
+if(document.fonts&&document.fonts.load){document.fonts.load("40px 'Klee One'","あ漢").then(drawPad).catch(()=>{})}
+
+/* ---------- essays ---------- */
+const wsel=document.getElementById("wweek");
+wsel.innerHTML=PLAN.map((p,i)=>'<option value="'+(i+1)+'">第 '+(i+1)+' 週</option>').join("");wsel.value=curWeek;
+const HINTS=["只用平假名都得，例如：わたしは ○○ です。","可以用：〜です、〜からきました、〜がすきです。","用 〜ます 同時間詞：まいあさ、〜じに、それから。","用形容詞：〜はちかいです、〜があります。","用 〜てください、〜てもいいですか。","用 た形同 〜たことがあります。","用 〜つもりです、〜と思います。","對照之前寫過嘅，改正錯誤。","用 〜ば／〜たら。","用 〜てくれました、〜てもらいました。","用 です・ます 同簡單敬語：〜でございます。","用 〜ようになりました、〜ことにしました。","用 〜ばかり、〜うちに、〜て以来。","用 〜にとって、〜に対して、〜によって。","用 〜させていただきたい、申し訳ありません。","題目：「私が日本語を勉強する理由」。計時 30 分鐘。"];
+function renderWrite(){const w=+wsel.value;document.getElementById("wprompt").innerHTML="<b>題目：</b>"+esc(PLAN[w-1].w);document.getElementById("whint").textContent="提示："+HINTS[w-1];
+  const t=document.getElementById("wtext");t.value=S.essays[w]||"";count()}
+function count(){const v=document.getElementById("wtext").value;document.getElementById("wcount").textContent=v.replace(/\s/g,"").length+" 字"}
+wsel.onchange=renderWrite;
+document.getElementById("wtext").oninput=e=>{S.essays[wsel.value]=e.target.value;save();count()};
+document.getElementById("wcopy").onclick=()=>{const t=document.getElementById("wtext");const b=document.getElementById("wcopy");
+  const done=()=>{b.textContent="已複製";setTimeout(()=>b.textContent="複製全文",1500)};
+  try{navigator.clipboard.writeText(t.value).then(done,()=>{t.select();b.textContent="已選取，請手動複製"})}catch(e){t.select()}};
+
+/* ---------- header countdown ---------- */
+(function(){const end=dayNum(new Date(2027,1,28)),exam=dayNum(new Date(2027,6,4));
+  document.getElementById("countdown").innerHTML='距離 2 月底 <b>'+Math.max(0,end-today)+'</b> 日<br>距離 JLPT（2027-07-04）'+Math.max(0,exam-today)+' 日'})();
+
+/* ---------- routing ---------- */
+const VIEWS=["today","plan","cards","kana","grammar","talk","write"];
+function route(){
+  let v=(location.hash||"#today").slice(1);if(!VIEWS.includes(v))v="today";
+  VIEWS.forEach(x=>document.getElementById("v-"+x).hidden=x!==v);
+  document.querySelectorAll("#tabs a").forEach(a=>a.getAttribute("href")==="#"+v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+  if(v==="today")renderToday();if(v==="plan")renderPlan();if(v==="cards"){renderDeckbar();buildQueue()}
+  if(v==="kana")renderKana();if(v==="grammar")renderGram();if(v==="talk")renderTalk();if(v==="write"){renderWrite();drawPad()}
+}
+window.addEventListener("hashchange",route);
+document.getElementById("newlimit").onchange=buildQueue;
+document.getElementById("reverse").onchange=renderCard;
+document.addEventListener("keydown",e=>{
+  if(document.getElementById("v-cards").hidden||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
+  if(e.code==="Space"){e.preventDefault();if(!flipped)flip()}
+  else if(flipped&&["1","2","3"].includes(e.key))grade(+e.key-1);
+});
+route();
+})();
+</script>
+</body>
+</html>
